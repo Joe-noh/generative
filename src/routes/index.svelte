@@ -1,30 +1,30 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount } from 'svelte'
 
   type Dot = {
-    x: number;
-    y: number;
-    size: number;
-    color: string;
-  };
+    x: number
+    y: number
+    size: number
+    color: string
+  }
 
-  let dots: Dot[] = [];
-  let container: Element = null;
+  let dots: Dot[] = []
+  let container: Element = null
 
   function random(limit) {
-    return Math.floor(Math.random() * limit);
+    return Math.floor(Math.random() * limit)
   }
 
   function pickColor() {
-    const colors = ['#f7f3e9', '#a3d2ca', '#5eaaa8', '#f05945'];
-    const index = Math.floor(random(colors.length));
+    const colors = ['#f7f3e9', '#a3d2ca', '#5eaaa8', '#f05945']
+    const index = Math.floor(random(colors.length))
 
-    return colors[index];
+    return colors[index]
   }
 
   function seed() {
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth
+    const height = container.clientHeight
 
     dots = [...Array(300)].map((i) => {
       return {
@@ -32,13 +32,13 @@
         y: random(height) - 20,
         size: random(30) + 10,
         color: pickColor()
-      };
-    });
+      }
+    })
   }
 
   onMount(() => {
-    seed();
-  });
+    seed()
+  })
 </script>
 
 <div class="container" bind:this={container}>
